@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/injections.dart';
 import 'package:pokedex/presenter/pages/pokemon_list_page.dart';
 
 void main() {
+  setupInjections();
   runApp(const MyApp());
 }
 

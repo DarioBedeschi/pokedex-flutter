@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/domain/entities/pokemon_entity.dart';
+import 'package:pokedex/injections.dart';
 import 'package:pokedex/presenter/stores/pokemon_list_page_store.dart';
 import 'package:pokedex/presenter/widget/pokemon_card.dart';
 import 'package:pokedex/presenter/widget/search_bar_field.dart';
@@ -12,7 +13,7 @@ class PokemonListPage extends StatefulWidget {
 }
 
 class _PokemonListPageState extends State<PokemonListPage> {
-  final store = PokemonListPageStore();
+  final store = getIt<PokemonListPageStore>();
   List<PokemonEntity> list = [];
 
   @override
@@ -22,7 +23,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
   }
 
   getPokemons() async {
-    final pokemons = await store.getPokemon();
+    final pokemons = await store.getPokemons();
     setState(() => list = pokemons);
   }
 
@@ -37,7 +38,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
               const SizedBox(
                 width: double.infinity,
                 child: Text(
-                  'Pokemon',
+                  'Pokedex',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 32,
